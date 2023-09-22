@@ -20,12 +20,10 @@ public class P05_Maximum_Sum_of_2x2_Submatrix {
                 }
             }
         }
-        int[][] maxSubMatrix = readSquareSubMatrix(matrixNumbers, maxRow, maxCol, 2);
-        for (int[] rows : maxSubMatrix) {
-            for (int num : rows) {
-                System.out.print(num + " ");
-            }
-            System.out.println();
+
+        for (int[] rows : readSquareSubMatrix(matrixNumbers, maxRow, maxCol, 2)) {
+
+            System.out.println(Arrays.toString(rows).replaceAll("[\\[\\],]",""));
         }
         System.out.println(maxSum);
     }
