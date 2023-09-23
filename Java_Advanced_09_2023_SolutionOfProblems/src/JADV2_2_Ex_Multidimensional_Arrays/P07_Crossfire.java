@@ -31,32 +31,40 @@ public class P07_Crossfire {
     }
 
     private static void crossFire(String[][] matrix, int row, int column, int radius) {
-        if (row < 0 || row >= matrix.length || column < 0 || column >= matrix[0].length) {
-            return;
-        }
-        int start = row - radius;
-        if (start < 0) start = 0;
-        int end = row + radius;
-        if (end > matrix.length) end = matrix.length;
 
-        for (int i = start; i < end; i++) {
-            matrix[i][column] = " ";
-        }
+        boolean isThereMarker = false;
+        if (column >= 0 && column < matrix[0].length) {
 
-        start = column - radius;
-        if (start < 0) start = 0;
-        end = column + radius;
-        if (end > matrix[0].length) end = matrix[0].length;
+            isThereMarker = true;
+            int start = row - radius;
+            int end = row + radius;
 
-        for (int i = start; i < end; i++) {
-            matrix[row][i] = " ";
+
+            for (int i = start; i <= end; i++) {
+                if (i >= 0 && i < matrix.length) {
+                    matrix[i][column] = " ";
+                }
+            }
         }
-        boolean isThereMarker = true;
+        if (row >= 0 && row < matrix.length) {
+
+            isThereMarker = true;
+            int start = column - radius;
+            int end = column + radius;
+
+
+            for (int i = start; i <= end; i++) {
+                if (i >= 0 && i < matrix[0].length)
+                    matrix[row][i] = " ";
+            }
+        }
+        if (!isThereMarker) return;
+
         while (isThereMarker) {
             isThereMarker = false;
             for (int i = 0; i < matrix.length; i++) {
-                for (int j = 0; j < matrix[i].length; j++) {
-                    if (matrix[i][j].equals(" ") && j < matrix[i].length - 1 && !matrix[i][j + 1].equals(" ")) {
+                for (int j = 0; j < matrix[i].length - 1; j++) {
+                    if (matrix[i][j].equals(" ") && !matrix[i][j + 1].equals(" ")) {
                         matrix[i][j] = matrix[i][j + 1];
                         matrix[i][j + 1] = " ";
                         isThereMarker = true;
@@ -64,16 +72,35 @@ public class P07_Crossfire {
                 }
             }
         }
+
+        isThereMarker = true;
+        while (isThereMarker) {
+            isThereMarker = false;
+            for (int i = 0; i < matrix.length - 1; i++) {
+                if (matrix[i][0].equals(" ") && !matrix[i + 1][0].equals(" ")) {
+                    for (int j = 0; j < matrix[i].length; j++) {
+                        matrix[i][j] = matrix[i + 1][j];
+                        matrix[i + 1][j] = " ";
+                    }
+                    isThereMarker = true;
+                }
+            }
+        }
+
     }
 
     private static void printMatrix(String[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
+            String line = "";
             for (int j = 0; j < matrix[0].length; j++) {
                 if (!matrix[i][j].equals(" ")) {
-                    System.out.print(matrix[i][j] + " ");
+                    line += matrix[i][j] + " ";
                 }
             }
-            System.out.println();
+            if (!line.equals("")) {
+                line = line.trim();
+                System.out.println(line);
+            }
         }
     }
 }
