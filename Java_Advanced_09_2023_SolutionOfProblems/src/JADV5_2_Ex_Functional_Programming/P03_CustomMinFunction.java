@@ -2,17 +2,24 @@ package JADV5_2_Ex_Functional_Programming;
 
 import java.util.*;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class P03_CustomMinFunction {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        List<Integer> numbersArr = Arrays.stream(scanner.nextLine().split("\\s+"))
+        Integer[] numbersArr = Arrays.stream(scanner.nextLine().split("\\s+"))
                 .map(Integer::parseInt)
-                .collect(Collectors.toList());
+                .toArray(Integer[]::new);
 
-        Function<List<Integer>, Integer> getMinNumber = numbers -> Collections.min(numbers);
+        Function<Integer[], Integer> getMinNumber = numbers -> Arrays.stream(numbers)
+                .min((a, b) -> a.compareTo(b))
+                .get();
+        // numbers->Arrays.stream(numbers)
+//                .min((a,b) -> Integer.compare(a,b))
+//                .get();
+
+        //numbers -> Collections.min(List.of(numbers));
+
 
         System.out.println(getMinNumber.apply(numbersArr));
     }

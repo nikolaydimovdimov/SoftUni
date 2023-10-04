@@ -8,6 +8,6 @@ public class P02_KnightsOfHonor {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Consumer<String> printString = str -> System.out.println("Sir " + str);
-        Arrays.stream(scanner.nextLine().split("\\s+")).forEach(s -> printString.accept(s));
+        Arrays.stream(scanner.nextLine().split("\\s+")).forEach(printString);
     }
 }

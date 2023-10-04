@@ -8,6 +8,6 @@ public class P01_ConsumerPrint {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Consumer<String> printString = str -> System.out.println(str);
-        Arrays.stream(scanner.nextLine().split("\\s+")).forEach(s -> printString.accept(s));
+        Arrays.stream(scanner.nextLine().split("\\s+")).forEach(printString);
     }
 }
