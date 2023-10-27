@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class P02_FishingCompetition {
     private static String[][] fishingArea;
     private static int[] shipPosition = new int[2];
+    private static int fishCatch ;
+    private static boolean isFallIntoWhirlpool;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -17,51 +19,34 @@ public class P02_FishingCompetition {
             fishingArea[i] = scanner.nextLine().split("");
         }
 
-        int fishCatch = 0;
         shipPosition = getShipPosition();
-        boolean isfallIntoWhirlpool = false;
-
+        isFallIntoWhirlpool = false;
+        fishCatch = 0;
         String command = scanner.nextLine();
 
-        while (!(command.equals("collect the nets") || isfallIntoWhirlpool)) {
+        while (!(command.equals("collect the nets") || isFallIntoWhirlpool)) {
             int[] coordinate;
             if (command.equals("left")) {
                 coordinate = getLeft();
-                if (Character.isDigit(getPartType(coordinate).charAt(0))) {
-                    fishCatch += Integer.parseInt(getPartType(coordinate));
-                } else if ("W".equals(getPartType(coordinate))) {
-                    isfallIntoWhirlpool = true;
-                }
+                executeCommand(coordinate);
                 moveLeft();
 
             } else if (command.equals("right")) {
                 coordinate = getRight();
-                if (Character.isDigit(getPartType(coordinate).charAt(0))) {
-                    fishCatch += Integer.parseInt(getPartType(coordinate));
-                } else if ("W".equals(getPartType(coordinate))) {
-                    isfallIntoWhirlpool = true;
-                }
+                executeCommand(coordinate);
                 moveRight();
             } else if (command.equals("up")) {
                 coordinate = getUp();
-                if (Character.isDigit(getPartType(coordinate).charAt(0))) {
-                    fishCatch += Integer.parseInt(getPartType(coordinate));
-                } else if ("W".equals(getPartType(coordinate))) {
-                    isfallIntoWhirlpool = true;
-                }
+                executeCommand(coordinate);
                 moveUp();
             } else if (command.equals("down")) {
                 coordinate = getDown();
-                if (Character.isDigit(getPartType(coordinate).charAt(0))) {
-                    fishCatch += Integer.parseInt(getPartType(coordinate));
-                } else if ("W".equals(getPartType(coordinate))) {
-                    isfallIntoWhirlpool = true;
-                }
+                executeCommand(coordinate);
                 moveDown();
             }
             command = scanner.nextLine();
         }
-        if (isfallIntoWhirlpool) {
+        if (isFallIntoWhirlpool) {
             System.out.printf("You fell into a whirlpool! The ship sank and you lost the fish you caught. Last coordinates of the ship: [%d,%d]%n",
                     shipPosition[0], shipPosition[1]);
         } else {
@@ -75,6 +60,14 @@ public class P02_FishingCompetition {
                 System.out.printf("Amount of fish caught: %d tons.%n", fishCatch);
             }
             for (String[] row : fishingArea) System.out.println(String.join("", row));
+        }
+    }
+
+    private static void executeCommand(int[] coordinate) {
+        if (Character.isDigit(getPartType(coordinate).charAt(0))) {
+            fishCatch += Integer.parseInt(getPartType(coordinate));
+        } else if ("W".equals(getPartType(coordinate))) {
+            isFallIntoWhirlpool = true;
         }
     }
 
@@ -96,7 +89,7 @@ public class P02_FishingCompetition {
 
     public static String getPartType(int[] coordinate) {
         if (checkCoordinate(coordinate)) return fishingArea[coordinate[0]][coordinate[1]];
-        return null;
+        return "";
     }
 
     public static void replacePartType(int[] coordinate, String newType) {
