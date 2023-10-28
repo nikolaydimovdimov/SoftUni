@@ -5,6 +5,9 @@ public class Student {
     private int age;
     private double grade;
 
+    public Student() {
+    }
+
     public Student(String name, int age, double grade) {
         this.name = name;
         this.age = age;
@@ -33,5 +36,18 @@ public class Student {
 
     public void setGrade(double grade) {
         this.grade = grade;
+    }
+
+    @Override
+    public String toString() {
+        String commentary;
+        if (this.getGrade() >= 5.00) {
+            commentary = "Excellent student";
+        } else if (this.getGrade() >= 3.50) {
+            commentary = "Average student";
+        } else {
+            commentary = "Very nice person";
+        }
+        return String.format("%s is %d years old. %s.", this.getName(), this.getAge(), commentary);
     }
 }

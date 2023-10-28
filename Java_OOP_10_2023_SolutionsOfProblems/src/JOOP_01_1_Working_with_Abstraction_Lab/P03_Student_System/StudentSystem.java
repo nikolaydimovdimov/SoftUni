@@ -6,52 +6,17 @@ import java.util.Map;
 public class StudentSystem {
     private Map<String, Student> repo;
 
-    public StudentSystem()
-    {
+    public StudentSystem() {
         this.repo = new HashMap<>();
     }
 
-    public Map<String, Student> getRepo() {
-        return this.repo;
+    public void create(String name,int age,double grade){
+        if(this.repo.containsKey(name)) return;
+        this.repo.put(name,new Student(name,age,grade));
     }
 
-    public void ParseCommand(String[]args)
-    {
-
-        if (args[0].equals("Create"))
-        {
-            var name = args[1];
-            var age = Integer.parseInt(args[2]);
-            var grade =Double.parseDouble(args[3]);
-            if (!repo.containsKey(name))
-            {
-                var student = new Student(name, age, grade);
-                repo.put(name,student);
-            }
-        }
-        else if (args[0].equals("Show"))
-        {
-            var name = args[1];
-            if (repo.containsKey(name))
-            {
-                var student = repo.get(name);
-                String view = String.format("%s is %s years old.",student.getName(),student.getAge());
-
-                if (student.getGrade() >= 5.00)
-                {
-                    view += " Excellent student.";
-                }
-                else if (student.getGrade() < 5.00 && student.getGrade() >= 3.50)
-                {
-                    view += " Average student.";
-                }
-                else
-                {
-                    view += " Very nice person.";
-                }
-
-                System.out.println(view);
-            }
-        }
+    public Student getStudent(String name) {
+        return this.repo.get(name);
     }
+
 }
