@@ -5,7 +5,7 @@ public class PriceCalculator {
 
 
 
-    public double calculate(double pricePerDay, int numberOfDays,
+    public static double calculate(double pricePerDay, int numberOfDays,
                             Season season, Discount discountType) {
         return pricePerDay * numberOfDays * season.getValue() * (100-discountType.getValue()) / 100;
 
