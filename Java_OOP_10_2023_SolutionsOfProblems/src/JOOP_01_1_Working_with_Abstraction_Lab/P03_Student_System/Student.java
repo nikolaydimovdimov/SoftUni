@@ -46,7 +46,7 @@ public class Student {
         } else if (this.getGrade() >= 3.50) {
             commentary = "Average student";
         } else {
-            commentary = "Very nice person";
+            commentary = "Very nice JOOP_03_2_Inheritance_Ex.person";
         }
         return String.format("%s is %d years old. %s.", this.getName(), this.getAge(), commentary);
     }
