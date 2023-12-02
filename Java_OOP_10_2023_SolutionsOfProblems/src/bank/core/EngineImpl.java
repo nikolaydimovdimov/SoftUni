@@ -1,6 +1,6 @@
-package handball.core;
+package bank.core;
 
-import handball.common.Command;
+import bank.common.Command;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class EngineImpl implements Engine {
             try {
                 result = processInput();
 
-                if (result.equals("Exit")) {
+                if (result.equals("End")) {
                     break;
                 }
             } catch (NullPointerException | IllegalArgumentException | IllegalStateException | IOException e) {
@@ -43,60 +43,57 @@ public class EngineImpl implements Engine {
         String[] data = Arrays.stream(tokens).skip(1).toArray(String[]::new);
 
         switch (command) {
-            case AddGameplay:
-                result = addGameplay(data);
+            case AddBank:
+                result = addBank(data);
                 break;
-            case AddTeam:
-                result = addTeam(data);
+            case AddLoan:
+                result = addLoan(data);
                 break;
-            case AddEquipment:
-                result = addEquipment(data);
+            case ReturnedLoan:
+                result = returnedLoan(data);
                 break;
-            case EquipmentRequirement:
-                result = equipmentRequirement(data);
+            case AddClient:
+                result = addClient(data);
                 break;
-            case PlayInGameplay:
-                result = playInGameplay(data);
+            case FinalCalculation:
+                result = finalCalculation(data);
                 break;
-            case PercentAdvantage:
-                result = percentAdvantage(data);
-                break;
-            case GetStatistics:
+            case Statistics:
                 result = getStatistics();
                 break;
-            case Exit:
-                result = Command.Exit.name();
+            case End:
+                result = Command.End.name();
                 break;
         }
         return result;
     }
 
-    private String addGameplay(String[] data) {
-        return this.controller.addGameplay(data[0], data[1]);
+    private String addBank(String[] data) {
+
+        return this.controller.addBank(data[0],data[1]);
+    }
+    private String addLoan(String[] data) {
+
+        return this.controller.addLoan(data[0]);
     }
 
-    private String addEquipment(String[] data) {
-        return this.controller.addEquipment(data[0]);
+    private String returnedLoan(String[] data) {
 
+        return this.controller.returnedLoan(data[0],data[1]);
     }
 
-    private String equipmentRequirement(String[] data) {
-        return this.controller.equipmentRequirement(data[0],data[1]);
+    private String addClient(String[] data) {
+
+        return this.controller.addClient(data[0],data[1],data[2],data[3],Double.parseDouble(data[4]));
     }
 
-    private String addTeam(String[] data) {
-        return this.controller.addTeam(data[0],data[1],data[2],data[3],Integer.parseInt(data[4]));
-    }
+    private String finalCalculation(String[] data) {
 
-    private String playInGameplay(String[] data) {
-        return this.controller.playInGameplay(data[0]);
-    }
-
-    private String percentAdvantage(String[] data) {
-        return this.controller.percentAdvantage(data[0]);
+        return this.controller.finalCalculation(data[0]);
     }
 
     private String getStatistics() {
-        return controller.getStatistics();
+        return this.controller.getStatistics();
     }
 }
+
