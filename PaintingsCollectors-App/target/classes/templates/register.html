@@ -9,39 +9,63 @@
     <form class="welcome login"
           th:method="POST"
           th:action="@{/reg}"
-            >
+          th:object="${userRegisterDto}">
         <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Register</span></h1>
+
+        <div th:if="${registerPassMatchingError}" class="danger" th:text="#{pass.matching.error}"></div>
+        <div th:if="${registerUserExistError}" class="danger" th:text="#{user.exist.Error}"></div>
+
         <div class="form-group">
             <div class="label-holder textCol d-flex justify-content-center">
                 <label for="username" class="h4 mb-2 text-white">Username</label>
             </div>
 
-            <input type="text" class="form-control" id="username" name="username"/>
-            <small class="danger" style="font-size: 15px">Username error message</small>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name="username"
+                    th:field="*{username}"/>
+            <small th:errors="*{username}" class="danger" style="font-size: 15px"></small>
         </div>
 
         <div class="form-group">
             <div class="label-holder text-white textCol d-flex justify-content-center">
                 <label for="email" class="h4 mb-2">Email</label>
             </div>
-            <input type="email" class="form-control" id="email" name="email"/>
-            <small class="danger">Email error message</small>
+            <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    th:field="*{email}"/>
+            <small th:errors="*{email}" class="danger"></small>
         </div>
 
         <div class="form-group">
             <div class="label-holder text-white textCol d-flex justify-content-center">
                 <label for="password" class="h4 mb-2">Password</label>
             </div>
-            <input type="password" class="form-control" id="password" name="password"/>
-            <small class="danger">Password error message</small>
+            <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    th:field="*{password}"/>
+            <small th:errors="*{password}" class="danger"></small>
         </div>
 
         <div class="form-group">
             <div class="label-holder text-white textCol d-flex justify-content-center">
                 <label for="confirmPassword" class="h4 mb-2">Confirm Password</label>
             </div>
-            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"/>
-            <small class="danger">Password error message</small>
+            <input
+                    type="password"
+                    class="form-control"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    th:field="*{confirmPassword}"/>
+            <small th:errors="*{confirmPassword}" class="danger"></small>
         </div>
 
         <div class="button-holder d-flex justify-content-center">
