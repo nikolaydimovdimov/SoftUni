@@ -1,0 +1,23 @@
+[
+  {
+    "styleName": "IMPRESSIONISM",
+    "description": "Impressionism is a painting style most commonly associated with the 19th century where small brush strokes are used to build up a larger picture."
+  },
+  {
+    "styleName": "ABSTRACT",
+    "description": "Abstract art does not attempt to represent recognizable subjects in a realistic manner. "
+  },
+  {
+    "styleName": "EXPRESSIONISM",
+    "description": "Expressionism is a style of art that doesn't concern itself with realism."
+  },
+  {
+    "styleName": "SURREALISM",
+    "description": "Surrealism is characterized by dreamlike, fantastical imagery that often defies logical explanation."
+  },
+  {
+    "styleName": "REALISM",
+    "description": "Also known as naturalism, this style of art is considered as 'real art' and has been the dominant style of painting since the Renaissance."
+  }
+]
+
