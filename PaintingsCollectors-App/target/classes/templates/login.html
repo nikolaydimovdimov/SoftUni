@@ -5,24 +5,37 @@
 <body>
 <header th:replace="fragments/commons::nav"></header>
 <main>
-    <form class="welcome login" action="/" method="">
+    <form class="welcome login"
+          th:action="@{/log}"
+          th:method="POST"
+          th:object="${userLoginDto}">
 
-        <div class="danger">Error messages</div>
-        <div class="danger">Incorrect username or password!</div>
+        <div th:each="error: ${#fields.errors()}" th:text="${error}" class="danger"></div>
+        <div th:if="${loginError}" class="danger" th:text="#{login.Error}"></div>
 
         <div class="form-group">
             <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Login</span></h1>
             <div class="label-holder text-white d-flex justify-content-center">
                 <label for="username" class="h3 mb-2">Username</label>
             </div>
-            <input type="text" class="form-control" id="username" name="username"/>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name="username"
+                    th:field="*{username}"/>
         </div>
 
         <div class="form-group">
             <div class="label-holder text-white d-flex justify-content-center">
                 <label for="password" class="h3 mb-2">Password</label>
             </div>
-            <input type="password" class="form-control" id="password" name="password"/>
+            <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    th:field="*{password}"/>
         </div>
 
         <div class="button-holder d-flex justify-content-center">

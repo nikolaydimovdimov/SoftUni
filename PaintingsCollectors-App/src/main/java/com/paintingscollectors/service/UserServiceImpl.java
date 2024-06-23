@@ -1,5 +1,6 @@
 package com.paintingscollectors.service;
 
+import com.paintingscollectors.model.dto.UserLoginDto;
 import com.paintingscollectors.model.dto.UserRegisterDto;
 import com.paintingscollectors.model.entity.User;
 import com.paintingscollectors.repository.UserRepository;
@@ -13,11 +14,13 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
+    private final CurrentUser currentUser;
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder, CurrentUser currentUser) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
+        this.currentUser = currentUser;
     }
 
 
@@ -34,5 +37,27 @@ public class UserServiceImpl implements UserService {
         this.userRepository.save(mappedUser);
 
         return true;
+    }
+
+    @Override
+    public boolean loginUser(UserLoginDto userLoginDto) {
+
+        User foundUser = this.userRepository
+                .findFirstByUsername(userLoginDto.getUsername())
+                .orElse(null);
+
+        if (foundUser != null ) {
+            String loginPassword = userLoginDto.getPassword();
+            String foundPassword = foundUser.getPassword();
+            if (passwordEncoder.matches( loginPassword, foundPassword)) {
+                this.currentUser.login(foundUser.getId(), userLoginDto.getUsername());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void logoutCurrentUser() {
+        this.currentUser.logout();
     }
 }

@@ -55,7 +55,9 @@ public class RegistrationController {
             return "redirect:/reg";
         }
 
-        if(!userService.addUser(userRegisterDto)) {
+        boolean isUserSuccessfullyAdded = this.userService.addUser(userRegisterDto);
+
+        if(!isUserSuccessfullyAdded) {
             redirectAttributes.addFlashAttribute("userRegisterDto", userRegisterDto);
             redirectAttributes.addFlashAttribute("registerUserExistError", true);
             return "redirect:/reg";
