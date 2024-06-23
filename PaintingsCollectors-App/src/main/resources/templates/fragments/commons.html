@@ -13,20 +13,20 @@
 <header>
     <nav>
         <div class="home">
-            <a href="/">Paintings Collectors App</a>
-            <a href="/">Add Painting</a>
+            <a th:href="@{/index}" th:unless="${@currentUser.isLogged()}">Paintings Collectors App</a>
+            <a th:href="@{/add}" th:if="${@currentUser.isLogged()}">Add Painting</a>
         </div>
         <div class="links">
             <li>
-                <a href="/">Login</a>
+                <a th:href="@{/log}" th:unless="${@currentUser.isLogged()}">Login</a>
             </li>
 
             <li>
-                <a href="/">Register</a>
+                <a th:href="@{/reg}" th:unless="${@currentUser.isLogged()}">Register</a>
             </li>
 
             <li>
-                <a href="/">Logout</a>
+                <a th:href="@{/logout}" th:if="${@currentUser.isLogged()}">Logout</a>
             </li>
         </div>
     </nav>
@@ -38,5 +38,6 @@
         </div>
     </div>
 </footer>
+
 </body>
 </html>
