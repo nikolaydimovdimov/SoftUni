@@ -13,6 +13,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -36,7 +37,7 @@
     "Spring Boot.PaintingsCollectorsApplication.executor": "Run",
     "Spring Boot.ResellerApplication.executor": "Run",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/niki_/Desktop/Spring Fundamentals/Projects/02.Spring-Boot-and-Spring-Data-Lab_MobiLeLeLe_Resources/mobilelele",
+    "last_opened_file_path": "C:/Users/niki_/Desktop/Spring Fundamentals/Projects/BonAppetit",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -116,11 +117,28 @@
       <workItem from="1718694869679" duration="66000" />
       <workItem from="1719144552469" duration="61000" />
       <workItem from="1719144633359" duration="6445000" />
-      <workItem from="1719151379596" duration="7562000" />
+      <workItem from="1719151379596" duration="8435000" />
+      <workItem from="1719303416753" duration="10823000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/paintingscollectors/service/PaintingServiceImpl.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/paintingscollectors/service/PaintingServiceImpl.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

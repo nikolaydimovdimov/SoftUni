@@ -42,7 +42,7 @@ public class LoginController {
                             BindingResult bindingResult,
                             RedirectAttributes redirectAttributes) {
         if(this.currentUser.isLogged()){
-            return "redirect:/";
+            return "redirect:/home";
         }
 
         if(bindingResult.hasErrors()) {
@@ -59,6 +59,6 @@ public class LoginController {
         }
         System.out.println("Login successful !!!!!!!!!!!!!!!!!!");
 
-        return "redirect:/";
+        return "redirect:/home";
     }
 }
