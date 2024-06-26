@@ -56,7 +56,7 @@ public class AddPaintingController {
             return "redirect:/add";
         }
         this.paintingService.addPainting(addPaintingDto);
-        return "home";
+        return "redirect:/home";
     }
 
 

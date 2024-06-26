@@ -10,6 +10,8 @@ import com.paintingscollectors.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PaintingServiceImpl implements PaintingService {
 
@@ -36,5 +38,17 @@ public class PaintingServiceImpl implements PaintingService {
                 .findFirstByStyleName(StyleEnum.valueOf(addPaintingDto.getStyle())).get());
         this.paintingRepository.save(mappedPainting);
         return true;
+    }
+
+    @Override
+    public List<Painting> getMyPaintings() {
+        return this.paintingRepository
+                .findAllByOwner(this.userRepository.getById(this.currentUser.getId()));
+    }
+
+    @Override
+    public List<Painting> getOtherPaintings() {
+        return this.paintingRepository
+                .findAllByOwnerNot(this.userRepository.getById(this.currentUser.getId()));
     }
 }

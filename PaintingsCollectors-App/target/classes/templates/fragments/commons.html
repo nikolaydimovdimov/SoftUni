@@ -13,7 +13,7 @@
 <header>
     <nav>
         <div class="home">
-            <a th:href="@{/index}" th:unless="${@currentUser.isLogged()}">Paintings Collectors App</a>
+            <a th:href="@{/index}">Paintings Collectors App</a>
             <a th:href="@{/add}" th:if="${@currentUser.isLogged()}">Add Painting</a>
         </div>
         <div class="links">
