@@ -20,7 +20,7 @@ public class User extends BaseEntity{
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private Set<Painting> paintings;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_favorite_paintings",
             joinColumns = @JoinColumn(name = "user_id"),

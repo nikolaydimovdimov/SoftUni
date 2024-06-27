@@ -24,6 +24,8 @@ public class HomeController {
         }
         model.addAttribute("myPaintings", this.paintingService.getMyPaintings());
         model.addAttribute("otherPaintings", this.paintingService.getOtherPaintings());
+        model.addAttribute("favoritePaintings", this.paintingService.getMyFavoritePaintings());
+        model.addAttribute("votedPaintings",this.paintingService.getTwoMostFavoritePaintings());
         return "home";
     }
 }

@@ -31,7 +31,7 @@ public class Painting extends BaseEntity{
     @Column(nullable = false)
     private int votes;
 
-    @ManyToMany(mappedBy = "favoritePaintings")
+    @ManyToMany(mappedBy = "favoritePaintings",fetch = FetchType.EAGER)
     private Set<User> usersFavorites;
 
     @ManyToMany(mappedBy = "ratedPaintings")

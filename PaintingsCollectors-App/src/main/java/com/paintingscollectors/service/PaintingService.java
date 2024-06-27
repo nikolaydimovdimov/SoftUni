@@ -4,6 +4,7 @@ import com.paintingscollectors.model.dto.AddPaintingDto;
 import com.paintingscollectors.model.entity.Painting;
 
 import java.util.List;
+import java.util.Set;
 
 public interface PaintingService {
 
@@ -11,4 +12,6 @@ public interface PaintingService {
 
     List<Painting> getMyPaintings();
     List<Painting> getOtherPaintings();
+    List<Painting> getMyFavoritePaintings();
+    List<Painting> getTwoMostFavoritePaintings();
 }

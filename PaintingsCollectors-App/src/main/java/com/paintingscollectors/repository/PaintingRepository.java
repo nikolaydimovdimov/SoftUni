@@ -11,4 +11,6 @@ import java.util.List;
 public interface PaintingRepository extends JpaRepository<Painting, Long> {
     List<Painting> findAllByOwner(User owner);
     List<Painting> findAllByOwnerNot(User owner);
+    List<Painting> findAllByUsersFavorites(User user);
+    List<Painting> findAllByVotesIsGreaterThan(int votes);
 }

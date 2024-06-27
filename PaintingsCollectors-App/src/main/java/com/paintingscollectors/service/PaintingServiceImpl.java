@@ -10,7 +10,7 @@ import com.paintingscollectors.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class PaintingServiceImpl implements PaintingService {
@@ -32,7 +32,7 @@ public class PaintingServiceImpl implements PaintingService {
     @Override
     public boolean addPainting(AddPaintingDto addPaintingDto) {
         Painting mappedPainting = modelMapper.map(addPaintingDto, Painting.class);
-        User owner=this.userRepository.findFirstById(this.currentUser.getId()).get();
+        User owner = this.userRepository.findFirstById(this.currentUser.getId()).get();
         mappedPainting.setOwner(owner);
         mappedPainting.setStyle(this.styleRepository
                 .findFirstByStyleName(StyleEnum.valueOf(addPaintingDto.getStyle())).get());
@@ -50,5 +50,24 @@ public class PaintingServiceImpl implements PaintingService {
     public List<Painting> getOtherPaintings() {
         return this.paintingRepository
                 .findAllByOwnerNot(this.userRepository.getById(this.currentUser.getId()));
+    }
+
+    @Override
+    public List<Painting> getMyFavoritePaintings() {
+        return this.paintingRepository
+                .findAllByUsersFavorites(this.userRepository.getById(this.currentUser.getId()));
+    }
+
+    @Override
+    public List<Painting> getTwoMostFavoritePaintings() {
+
+        List<Painting> votedPaintings = this.paintingRepository.findAllByVotesIsGreaterThan(0);
+        if (votedPaintings.size() > 1) {
+            votedPaintings.sort((p1, p2) -> p2.getVotes() - p1.getVotes());
+            if (votedPaintings.size() > 2) {
+                votedPaintings.subList(0,2);
+            }
+        }
+        return votedPaintings;
     }
 }
