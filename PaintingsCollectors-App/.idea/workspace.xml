@@ -37,7 +37,7 @@
     "Spring Boot.PaintingsCollectorsApplication.executor": "Run",
     "Spring Boot.ResellerApplication.executor": "Run",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/niki_/Desktop/Spring Fundamentals/Projects/Exam_23.06.2024/PaintingsCollectors-App",
+    "last_opened_file_path": "C:/Users/niki_/Desktop/SoftUni_Spring Data/Projects/p08_2ex_json_xml_CarDealer",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -120,6 +120,7 @@
       <workItem from="1719151379596" duration="8435000" />
       <workItem from="1719303416753" duration="15675000" />
       <workItem from="1719475020857" duration="10967000" />
+      <workItem from="1719564868226" duration="13659000" />
     </task>
     <servers />
   </component>
@@ -130,14 +131,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/paintingscollectors/service/PaintingServiceImpl.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/paintingscollectors/service/PaintingServiceImpl.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/paintingscollectors/controller/HomeController.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

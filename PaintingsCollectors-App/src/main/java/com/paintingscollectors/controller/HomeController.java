@@ -5,6 +5,7 @@ import com.paintingscollectors.service.PaintingService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class HomeController {
@@ -27,5 +28,23 @@ public class HomeController {
         model.addAttribute("favoritePaintings", this.paintingService.getMyFavoritePaintings());
         model.addAttribute("votedPaintings",this.paintingService.getTwoMostFavoritePaintings());
         return "home";
+    }
+
+    @GetMapping("/paintings/remove/{id}")
+    public String removePainting(@PathVariable Long id) {
+        if (!currentUser.isLogged()){
+            return "redirect:/";
+        }
+        this.paintingService.removePaintingById(id);
+        return "redirect:/home";
+    }
+
+    @GetMapping("/paintings/add-to-favorites/{id}")
+    public String addToFavorites(@PathVariable Long id) {
+        if (!currentUser.isLogged()){
+            return "redirect:/";
+        }
+        this.paintingService.addToFavoritePainting(id);
+        return "redirect:/home";
     }
 }

@@ -54,8 +54,10 @@ public class PaintingServiceImpl implements PaintingService {
 
     @Override
     public List<Painting> getMyFavoritePaintings() {
-        return this.paintingRepository
-                .findAllByUsersFavorites(this.userRepository.getById(this.currentUser.getId()));
+        return this.userRepository
+                .findFirstById(this.currentUser.getId()).get()
+                .getFavoritePaintings().stream().toList();
+
     }
 
     @Override
@@ -69,5 +71,19 @@ public class PaintingServiceImpl implements PaintingService {
             }
         }
         return votedPaintings;
+    }
+
+    @Override
+    public void removePaintingById(Long id) {
+        this.paintingRepository.deleteById(id);
+    }
+
+    @Override
+    public void addToFavoritePainting(Long id) {
+        User user = this.userRepository.findFirstById(this.currentUser.getId()).get();
+        Painting painting = this.paintingRepository.findFirstById(id).get();
+        painting.setFavorite(true);
+        painting.getUsersFavorites().add(user);
+        this.paintingRepository.save(painting);
     }
 }

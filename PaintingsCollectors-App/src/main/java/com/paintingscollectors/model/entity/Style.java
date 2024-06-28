@@ -15,7 +15,7 @@ public class Style extends BaseEntity{
     @Column(nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "style", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "style", fetch = FetchType.EAGER)
     private Set<Painting> paintings;
 
     public Style() {

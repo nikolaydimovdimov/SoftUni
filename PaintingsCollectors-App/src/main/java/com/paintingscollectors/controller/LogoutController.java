@@ -9,6 +9,7 @@ public class LogoutController {
 
     private final CurrentUser currentUser;
 
+
     public LogoutController(CurrentUser currentUser) {
         this.currentUser = currentUser;
     }

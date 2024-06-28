@@ -57,7 +57,5 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    public void logoutCurrentUser() {
-        this.currentUser.logout();
-    }
+
 }

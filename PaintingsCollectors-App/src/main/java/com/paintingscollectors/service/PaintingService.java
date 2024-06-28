@@ -14,4 +14,6 @@ public interface PaintingService {
     List<Painting> getOtherPaintings();
     List<Painting> getMyFavoritePaintings();
     List<Painting> getTwoMostFavoritePaintings();
+    void removePaintingById(Long id);
+    void addToFavoritePainting(Long id);
 }

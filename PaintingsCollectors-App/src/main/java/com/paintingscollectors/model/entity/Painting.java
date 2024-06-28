@@ -1,5 +1,7 @@
 package com.paintingscollectors.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,11 +17,11 @@ public class Painting extends BaseEntity{
     private String author;
 
     @ManyToOne
-    @JoinColumn(name = "style_id", nullable = false)
+    @JoinColumn(name = "style_id", referencedColumnName =   "id", nullable = false)
     private Style style;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id", nullable = false)
+    @JoinColumn(name = "owner_id", referencedColumnName = "id",nullable = false)
     private User owner;
 
     @Column(nullable = false, length = 150)
@@ -31,10 +33,16 @@ public class Painting extends BaseEntity{
     @Column(nullable = false)
     private int votes;
 
-    @ManyToMany(mappedBy = "favoritePaintings",fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_favorite_paintings",
+    joinColumns=@JoinColumn(name = "painting_id",referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"))
     private Set<User> usersFavorites;
 
-    @ManyToMany(mappedBy = "ratedPaintings")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_rated_paintings",
+    joinColumns = @JoinColumn(name = "painting_id",referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"))
     private Set<User> usersRated;
 
     public Painting() {

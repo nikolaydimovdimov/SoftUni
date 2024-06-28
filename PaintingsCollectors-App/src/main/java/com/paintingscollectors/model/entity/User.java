@@ -17,18 +17,18 @@ public class User extends BaseEntity{
     @Column(unique = true, nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     private Set<Painting> paintings;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_favorite_paintings",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "painting_id")
+            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "painting_id",referencedColumnName = "id")
     )
     private Set<Painting> favoritePaintings;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_rated_paintings",
             joinColumns = @JoinColumn(name = "user_id"),

@@ -1068,7 +1068,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="312" parent="1" name="paintings_collectors">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-06-23.14:11:25</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-06-28.11:22:47</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="313" parent="1" name="mysql.infoschema">
@@ -1234,13 +1234,13 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <RefTableName>paintings</RefTableName>
     </foreign-key>
     <index id="347" parent="319" name="PRIMARY">
-      <ColNames>user_id
-painting_id</ColNames>
+      <ColNames>painting_id
+user_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="348" parent="319" name="FKqqak868twdu51iakllpwaws68">
-      <ColNames>painting_id</ColNames>
+    <index id="348" parent="319" name="FKnd6bv8wqrp2tf6j0tjo5wempw">
+      <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="349" parent="319" name="PRIMARY">
@@ -1269,13 +1269,13 @@ painting_id</ColNames>
       <RefTableName>paintings</RefTableName>
     </foreign-key>
     <index id="354" parent="320" name="PRIMARY">
-      <ColNames>user_id
-painting_id</ColNames>
+      <ColNames>painting_id
+user_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="355" parent="320" name="FKkq2ql1q2lu5f1sldpa5dl2iro">
-      <ColNames>painting_id</ColNames>
+    <index id="355" parent="320" name="FK437urwl9il51qj1yap2chngct">
+      <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="356" parent="320" name="PRIMARY">

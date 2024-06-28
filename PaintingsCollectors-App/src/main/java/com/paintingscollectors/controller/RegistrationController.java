@@ -65,7 +65,7 @@ public class RegistrationController {
 
 
 
-        return "redirect:/";
+        return "redirect:/log";
     }
 
 
