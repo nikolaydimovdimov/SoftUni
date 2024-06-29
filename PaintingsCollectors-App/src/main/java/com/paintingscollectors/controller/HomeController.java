@@ -26,7 +26,7 @@ public class HomeController {
         model.addAttribute("myPaintings", this.paintingService.getMyPaintings());
         model.addAttribute("otherPaintings", this.paintingService.getOtherPaintings());
         model.addAttribute("favoritePaintings", this.paintingService.getMyFavoritePaintings());
-        model.addAttribute("votedPaintings",this.paintingService.getTwoMostFavoritePaintings());
+        model.addAttribute("votedPaintings",this.paintingService.getTwoMostVotedPaintings());
         return "home";
     }
 
@@ -45,6 +45,24 @@ public class HomeController {
             return "redirect:/";
         }
         this.paintingService.addToFavoritePainting(id);
+        return "redirect:/home";
+    }
+
+    @GetMapping("/paintings/remove-favorites/{id}")
+    public String removeFromFavorites(@PathVariable Long id) {
+        if (!currentUser.isLogged()){
+            return "redirect:/";
+        }
+        this.paintingService.removeFromFavoritePainting(id);
+        return "redirect:/home";
+    }
+
+    @GetMapping("/paintings/vote/{id}")
+    public String votePainting(@PathVariable Long id){
+        if (!currentUser.isLogged()){
+            return "redirect:/";
+        }
+        this.paintingService.votePainting(id);
         return "redirect:/home";
     }
 }

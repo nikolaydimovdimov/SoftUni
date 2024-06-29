@@ -108,6 +108,10 @@
                     <h3 class="my-paintings">Most Rated Paintings</h3>
                     <div class="most-rated" th:each="mostRated : ${votedPaintings}">                                           <!--//TODO-->
                         <!--<div class="most-rated" th:each="..."-->
+                        <td scope="row" style="width: 5%">
+                            <img class="mr-2" th:src="${mostRated.getImageUrl()}" alt="" width="35px"
+                                 height="35px">
+                        </td>
                         <p><span th:text="${mostRated.getName()}"></span> by <span th:text="${mostRated.getAuthor()}"></span></p>
                         <p>Number of votes: <span th:text="${mostRated.getVotes()}"></span> </p>
                     </div>

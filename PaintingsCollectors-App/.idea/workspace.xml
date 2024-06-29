@@ -121,21 +121,11 @@
       <workItem from="1719303416753" duration="15675000" />
       <workItem from="1719475020857" duration="10967000" />
       <workItem from="1719564868226" duration="13659000" />
+      <workItem from="1719667388607" duration="6258000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/paintingscollectors/controller/HomeController.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

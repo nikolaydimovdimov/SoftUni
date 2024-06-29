@@ -61,14 +61,14 @@ public class PaintingServiceImpl implements PaintingService {
     }
 
     @Override
-    public List<Painting> getTwoMostFavoritePaintings() {
+    public List<Painting> getTwoMostVotedPaintings() {
 
         List<Painting> votedPaintings = this.paintingRepository.findAllByVotesIsGreaterThan(0);
         if (votedPaintings.size() > 1) {
             votedPaintings.sort((p1, p2) -> p2.getVotes() - p1.getVotes());
-            if (votedPaintings.size() > 2) {
-                votedPaintings.subList(0,2);
-            }
+        }
+        if (votedPaintings.size() > 2) {
+            return votedPaintings.subList(0, 2);
         }
         return votedPaintings;
     }
@@ -85,5 +85,42 @@ public class PaintingServiceImpl implements PaintingService {
         painting.setFavorite(true);
         painting.getUsersFavorites().add(user);
         this.paintingRepository.save(painting);
+    }
+
+    @Override
+    public void removeFromFavoritePainting(Long id) {
+        User user = this.userRepository.findFirstById(this.currentUser.getId()).get();
+        Painting painting = this.paintingRepository.findFirstById(id).get();
+        for (User usersFavorite : painting.getUsersFavorites()) {
+            if (usersFavorite.getId().equals(user.getId())) {
+                painting.getUsersFavorites().remove(usersFavorite);
+                break;
+            }
+        }
+        if (painting.getUsersFavorites().size() == 0) {
+            painting.setFavorite(false);
+        }
+        this.paintingRepository.save(painting);
+    }
+
+    @Override
+    public void votePainting(Long id) {
+        User user = this.userRepository.findFirstById(this.currentUser.getId()).get();
+        Painting painting = this.paintingRepository.findFirstById(id).get();
+        boolean isVoted = false;
+        if (user.getRatedPaintings().size() > 0) {
+            for (Painting ratedPainting : user.getRatedPaintings()) {
+                if (ratedPainting.getId().equals(painting.getId())) {
+                    isVoted = true;
+                    break;
+                }
+            }
+        }
+        if (!isVoted) {
+            painting.setVotes(painting.getVotes() + 1);
+            user.getRatedPaintings().add(painting);
+            this.paintingRepository.save(painting);
+            this.userRepository.save(user);
+        }
     }
 }
