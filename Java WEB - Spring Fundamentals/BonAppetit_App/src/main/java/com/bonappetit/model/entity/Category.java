@@ -1,9 +1,7 @@
 package com.bonappetit.model.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 public class Category extends BaseEntity {
@@ -33,7 +31,7 @@ public class Category extends BaseEntity {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(java.lang.String description) {
         this.description = description;
     }
 

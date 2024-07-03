@@ -1,0 +1,14 @@
+[
+  {
+    "categoryName": "MAIN_DISH",
+    "description": "Heart of the meal, substantial and satisfying; main dish delights taste buds."
+  },
+  {
+    "categoryName": "DESSERT",
+    "description": "Sweet finale, indulgent and delightful; dessert crowns the dining experience with joy."
+  },
+  {
+    "categoryName": "COCKTAIL",
+    "description": "Sip of sophistication, cocktails blend flavors, creating a spirited symphony in every glass."
+  }
+]
