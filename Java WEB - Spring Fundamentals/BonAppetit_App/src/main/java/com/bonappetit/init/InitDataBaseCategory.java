@@ -10,8 +10,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -57,7 +55,7 @@ public class InitDataBaseCategory implements CommandLineRunner {
                     result.append(String.format("ERROR when add category %s\n", categorySeedDto.getCategoryName()));
                 }
             }
-            System.out.println(result.toString());
+            System.out.println(result);
         } else {
             System.out.println("There are categories in the database!!!");
         }

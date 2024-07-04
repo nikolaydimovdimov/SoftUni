@@ -12,21 +12,21 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg bg-nav rounded">
-        <a class="nav-link text-primary active h5 text-stroke" href="/">Bon App-étit</a>
-        <a class="nav-link text-primary active h5 text-stroke" href="/">Add Recipe</a>
+        <a class="nav-link text-primary active h5 text-stroke" th:href="@{/}" >Bon App-étit</a>
+        <a class="nav-link text-primary active h5 text-stroke" th:href="@{/recipe-add}" th:if="${@currentLoggedUser.isLogged()}">Add Recipe</a>
 
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul class="navbar-nav row">
                 <li class="nav-item col-md-4">
-                    <a class="nav-link text-primary active h5 text-stroke" href="/">Login</a>
+                    <a class="nav-link text-primary active h5 text-stroke" th:href="@{/login}" th:unless="${@currentLoggedUser.isLogged()}">Login</a>
                 </li>
 
                 <li class="nav-item col-md-4">
-                    <a class="nav-link text-primary active h5 text-stroke" href="/">Register</a>
+                    <a class="nav-link text-primary active h5 text-stroke" th:href="@{/register}" th:unless="${@currentLoggedUser.isLogged()}">Register</a>
                 </li>
 
                 <li class="nav-item col-md-4">
-                    <a class="nav-link text-primary active h5 text-stroke" href="/">Logout</a>
+                    <a class="nav-link text-primary active h5 text-stroke" th:href="@{/logout}" th:if="${@currentLoggedUser.isLogged()}">Logout</a>
                 </li>
             </ul>
         </div>
