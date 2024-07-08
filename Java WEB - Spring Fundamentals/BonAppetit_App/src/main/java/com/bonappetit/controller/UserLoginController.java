@@ -58,7 +58,6 @@ public class UserLoginController {
             redirectAttributes.addFlashAttribute("loginError", true);
             return "redirect:/login";
         }
-        System.out.println("Login successful !!!!!!!!!!!!!!!!!!");
 
         return "redirect:/home";
     }

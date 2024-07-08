@@ -42,7 +42,7 @@ public class RecipeServiceImpl implements RecipeService {
     public void addRecipe(AddRecipeDto addRecipeDto) {
         Recipe recipeMapped = modelMapper.map(addRecipeDto, Recipe.class);
         recipeMapped.setCategory(this.categoryRepository
-                .findFirstByCategoryName(CategoryEnum.valueOf(addRecipeDto.getCategory())).get());
+                .findFirstByCategoryName(addRecipeDto.getCategory()).get());
         recipeMapped.setAddedBy(this.userRepository.findFirstById(this.currentLoggedUser.getId()).get());
         this.recipeRepository.save(recipeMapped);
     }

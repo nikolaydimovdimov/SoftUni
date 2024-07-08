@@ -22,7 +22,9 @@
                     class="form-control"
                     id="name"
                     name="name"
-                    th:field="*{name}"></textarea>
+                    th:field="*{name}"
+                    th:errorclass="'is-invalid alert-danger'">
+            </textarea>
             <small th:errors="*{name}" class="text-danger">Name error message</small>
         </div>
 
@@ -35,7 +37,8 @@
                     class="form-control"
                     id="ingredients"
                     name="ingredients"
-                    th:field="*{ingredients}"></textarea>
+                    th:field="*{ingredients}"
+                    th:errorclass="'is-invalid alert-danger'"></textarea>
             <small th:errors="*{ingredients}" class="text-danger">Ingredients error message</small>
         </div>
 
@@ -47,6 +50,7 @@
                     id="category"
                     name="category"
                     th:field="*{category}"
+                    th:errorclass="'is-invalid alert-danger'"
             >
                 <option value="">Categories</option>
                 <option th:each="categoryEnum : ${allCategories}"

@@ -1,14 +1,16 @@
 package com.bonappetit.model.dto;
 
 
+import com.bonappetit.model.entity.CategoryEnum;
 import com.google.gson.annotations.Expose;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class CategorySeedDto {
     @Expose
-    @NotBlank
-    private String categoryName;
+    @NotNull
+    private CategoryEnum categoryName;
 
     @Expose
     @NotBlank
@@ -17,11 +19,11 @@ public class CategorySeedDto {
     public CategorySeedDto() {
     }
 
-    public String getCategoryName() {
+    public CategoryEnum getCategoryName() {
         return categoryName;
     }
 
-    public void setCategoryName(String categoryName) {
+    public void setCategoryName(CategoryEnum categoryName) {
         this.categoryName = categoryName;
     }
 

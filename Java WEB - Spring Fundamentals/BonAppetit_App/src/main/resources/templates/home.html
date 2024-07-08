@@ -20,7 +20,8 @@
                                 </td>
                                 <td th:text="${dessert.getName()}">{name}</td>
                                 <td th:text="${dessert.getIngredients()}">{ingredients}</td>
-                                <td><a th:href="@{/rate/{id}(id = ${dessert.getId()})}"><img class="mr-2 " src="/img/add-to-favourites.png" alt="Dessert" width="35px" height="35px"></a></td>
+                                <td><a th:href="@{/rate/{id}(id = ${dessert.getId()})}">
+                                    <img class="mr-2 " src="/img/add-to-favourites.png" alt="Dessert" width="35px" height="35px"></a></td>
                                 </td>
                             </tr>
                         </table>
@@ -57,7 +58,8 @@
                                 </td>
                                 <td th:text="${main_dish.getName()}">{name}</td>
                                 <td th:text="${main_dish.getIngredients()}">{ingredients}</td>
-                                <td><a th:href="@{/rate/{id}(id = ${main_dish.getId()})}"><img class="mr-2 " src="/img/add-to-favourites.png" alt="Main-Dish" width="35px" height="35px"></a></td>
+                                <td><a th:href="@{/rate/{id}(id = ${main_dish.getId()})}">
+                                    <img class="mr-2 " src="/img/add-to-favourites.png" alt="Main-Dish" width="35px" height="35px"></a></td>
                             </tr>
                         </table>
                     </div>

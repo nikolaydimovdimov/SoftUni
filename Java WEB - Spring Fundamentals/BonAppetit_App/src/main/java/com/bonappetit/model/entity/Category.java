@@ -1,7 +1,9 @@
 package com.bonappetit.model.entity;
 
 import javax.persistence.*;
+import java.util.Arrays;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Category extends BaseEntity {
@@ -42,4 +44,5 @@ public class Category extends BaseEntity {
     public void setRecipes(Set<Recipe> recipes) {
         this.recipes = recipes;
     }
+
 }

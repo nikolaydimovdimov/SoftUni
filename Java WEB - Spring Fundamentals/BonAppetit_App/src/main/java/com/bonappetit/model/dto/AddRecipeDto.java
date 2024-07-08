@@ -1,7 +1,10 @@
 package com.bonappetit.model.dto;
 
 
+import com.bonappetit.model.entity.CategoryEnum;
+
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class AddRecipeDto {
@@ -14,8 +17,8 @@ public class AddRecipeDto {
     @Size(min = 2, max = 150,message = "{recipe.add.ingredients.length}")
     private String ingredients;
 
-    @NotBlank(message = "{recipe.add.category.not.blank}")
-    private String category;
+    @NotNull(message = "{recipe.add.category.not.blank}")
+    private CategoryEnum category; // !!!!!!!!!!!!!!!!!!
 
     public AddRecipeDto() {
     }
@@ -36,11 +39,11 @@ public class AddRecipeDto {
         this.ingredients = ingredients;
     }
 
-    public String getCategory() {
+    public CategoryEnum getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(CategoryEnum category) {
         this.category = category;
     }
 }
