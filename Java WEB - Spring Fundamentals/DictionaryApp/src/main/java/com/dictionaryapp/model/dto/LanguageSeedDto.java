@@ -1,6 +1,6 @@
 package com.dictionaryapp.model.dto;
 
-import com.dictionaryapp.model.entity.LangugeEnum;
+import com.dictionaryapp.model.entity.LanguageEnum;
 import com.google.gson.annotations.Expose;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -9,7 +9,7 @@ public class LanguageSeedDto {
 
     @Expose
     @NotNull
-    private LangugeEnum languageName;
+    private LanguageEnum languageName;
 
     @Expose
     @NotBlank
@@ -18,11 +18,11 @@ public class LanguageSeedDto {
     public LanguageSeedDto() {
     }
 
-    public LangugeEnum getLanguageName() {
+    public LanguageEnum getLanguageName() {
         return languageName;
     }
 
-    public void setLanguageName(LangugeEnum languageName) {
+    public void setLanguageName(LanguageEnum languageName) {
         this.languageName = languageName;
     }
 

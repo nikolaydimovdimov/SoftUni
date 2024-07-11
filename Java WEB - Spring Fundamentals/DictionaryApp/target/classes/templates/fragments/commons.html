@@ -13,21 +13,21 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-nav rounded " >
         <a class="nav-link my-text-color active h5 " th:href="@{/}">Dictionary App</a>
-        <a class="nav-link my-text-color active h5  " th:href="@{/word-add}">Add Word</a>
+        <a class="nav-link my-text-color active h5  " th:href="@{/word-add}" th:if="${@currentLoggedUser.isLogged()}">Add Word</a>
 
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul class="navbar-nav row">
                 <li class="nav-item col-md-4">
-                    <a class="nav-link active h5 my-text-color" th:href="@{/login}">Login</a>
+                    <a class="nav-link active h5 my-text-color" th:href="@{/login}" th:unless="${@currentLoggedUser.isLogged()}">Login</a>
                 </li>
 
                 <li class="nav-item col-md-4">
-                    <a class="nav-link my-text-color active h5 " th:href="@{/register}">Register</a>
+                    <a class="nav-link my-text-color active h5 " th:href="@{/register}" th:unless="${@currentLoggedUser.isLogged()}">Register</a>
                 </li>
 
-                    <a class="nav-link h5 my-text-color">Welcome, {username}</a>
+                    <a class="nav-link h5 my-text-color" th:if="${@currentLoggedUser.isLogged()}">Welcome, <span th:text="${@currentLoggedUser.username}"></span></a>
                 <li class="nav-item col-md-4">
-                    <a class="nav-link my-text-color active h5 " th:href="@{/logout}">Logout</a>
+                    <a class="nav-link my-text-color active h5 " th:href="@{/logout}" th:if="${@currentLoggedUser.isLogged()}">Logout</a>
                 </li>
             </ul>
         </div>
